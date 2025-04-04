@@ -1,6 +1,7 @@
 services:
   postgres:
     image: timescale/timescaledb:latest-pg16
+    container_name: postgres
     restart: always
     environment:
       POSTGRES_DB: helixdb
@@ -16,12 +17,14 @@ services:
 
   redis:
     image: redis:latest
+    container_name: redis
     restart: always
     ports:
       - "32790:6379"
 
   helix:
     image: whereasjovially/helix:bolt
+    container_name: helix
     volumes:
       - ./config.yml:/app/config.yml
       - ./network-config.yaml:/app/network-config.yaml  # Mount network-config.yaml
@@ -32,7 +35,7 @@ services:
       redis:
         condition: service_started
     ports:
-      - "32792:4040"
+      - "4040:4040"
     env_file:
       - .env  # Load environment variables from the .env file
     environment:

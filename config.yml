@@ -1,5 +1,5 @@
 postgres:
-  hostname: "helder-postgres-1"
+  hostname: "postgres"
   port: 5432  # Default PostgreSQL port
   db_name: "helixdb"
   user: "postgres"
@@ -8,7 +8,7 @@ postgres:
   region_name: "bolt"  # Keeping default value
 
 redis:
-  url: "redis://helder-redis-1:6379"
+  url: "redis://redis:6379"
 
 network_config: 
   !Custom
@@ -17,10 +17,11 @@ network_config:
     genesis_time: 1718967660
 
 simulator:
-  url: "http://172.16.0.11:8545"
+  url: "http://5.161.110.21:8547"
 
 beacon_clients:
-  - url: "https://bn.bootnode.helder-devnets.xyz/"  # Your beacon node URL
+  - url: "http://5.161.110.21:4000"
+  - url: "http://5.161.110.21:4001"
 
 builders:
   # Reference: https://github.com/chainbound/bolt-builder/blob/main/cmd/utils/flags.go#L691-L691
@@ -43,5 +44,5 @@ website:
   port: 8080
   listen_address: "0.0.0.0"
   network_name: "helder"
-  relay_url: http://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e5291b27e08d02c50a050825c2f@49.13.144.62:4040
+  relay_url: http://0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e5291b27e08d02c50a050825c2f@5.161.110.21:4040
   relay_pubkey: 0xaa58208899c6105603b74396734a6263cc7d947f444f396a90f7b7d3e65d102aec7e5e5291b27e08d02c50a050825c2f
